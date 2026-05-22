@@ -1,0 +1,86 @@
+[
+  {
+    "Aduana": "Nuevo Laredo",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Cd. Camargo",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Cd. Miguel Alemán",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Colombia",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Cd. Reynosa",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Matamoros",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Tijuana",
+    "Zona Horaria": "Hora del Pacífico (UTC-8/-7 en verano)"
+  },
+  {
+    "Aduana": "Mexicali",
+    "Zona Horaria": "Hora del Pacífico (UTC-8/-7 en verano)"
+  },
+  {
+    "Aduana": "San Luis Rio Colorado",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)*"
+  },
+  {
+    "Aduana": "Tecate",
+    "Zona Horaria": "Hora del Pacífico (UTC-8/-7 en verano)"
+  },
+  {
+    "Aduana": "Agua Prieta",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)*"
+  },
+  {
+    "Aduana": "Naco",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)*"
+  },
+  {
+    "Aduana": "Nogales",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)*"
+  },
+  {
+    "Aduana": "Sonoyta",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)*"
+  },
+  {
+    "Aduana": "Cd. Juárez",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)"
+  },
+  {
+    "Aduana": "Cd. Acuña",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Ojinaga",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)"
+  },
+  {
+    "Aduana": "Piedras Negras",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Puerto Palomas",
+    "Zona Horaria": "Hora estándar de la montaña (UTC-7)"
+  },
+  {
+    "Aduana": "Cd. Hidalgo",
+    "Zona Horaria": "Hora estándar central (UTC-6)"
+  },
+  {
+    "Aduana": "Subteniente López",
+    "Zona Horaria": "Hora estándar del este (UTC-5)"
+  }
+]
