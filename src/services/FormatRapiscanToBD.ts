@@ -7,6 +7,7 @@ import { Customs } from "../Entities/Customs";
 import { CustomSection } from "../Entities/CustomSection";
 import { CustomSectionHasOperation } from "../Entities/CustomSectionHasOperation";
 import { Equipos } from "../Entities/Equipos";
+import { EquiposHasSitios } from "../Entities/EquiposHasSitios";
 import { Events } from "../Entities/Events";
 import { InspectionSystem } from "../Entities/InspectionSystem";
 import { OperationAreas } from "../Entities/OperationAreas";
@@ -23,6 +24,7 @@ import { TargetEvents } from "../Entities/TargetEvents";
 import { Vehicles } from "../Entities/Vehicles";
 import { Vehicle_types } from "../Entities/Vehicles_types";
 import { XRayFile } from "../Entities/XRayFile";
+import { User } from "../Entities/User";
 import { runInTransaction } from "../utils/transaction";
 import { convertirTimestampConZonas } from "../middleware/zonaHoraria";
 import { dataSerialNumber } from "../data/SerialNumber";
@@ -466,6 +468,42 @@ export const FormatRapiscanToBD = async (
 
       const fechaBienFin = new Date(conversion.horaCentro);
 
+      let equiposHasSitiosSaved = await queryRunner.manager.findOne(EquiposHasSitios, {
+        where: { serie: serialNumberToSearch },
+      });
+
+      if (!equiposHasSitiosSaved) {
+        let equipoName = foundItem?.Model;
+        if (!equipoName || equipoName === "") {
+          equipoName = target?.InspectionSystem?.[0]?.ModelName?.[0] || "General";
+        }
+
+        let equipoSaved = await queryRunner.manager.findOne(Equipos, {
+          where: { name: equipoName },
+        });
+
+        if (!equipoSaved) {
+          equipoSaved = await queryRunner.manager.save(Equipos, {
+            name: equipoName,
+          });
+        }
+
+        equiposHasSitiosSaved = await queryRunner.manager.findOne(EquiposHasSitios, {
+          where: {
+            sitios_id: { id: sitiosSaved!.id },
+            equipos_id: { id: equipoSaved.id },
+          },
+        });
+
+        if (!equiposHasSitiosSaved) {
+          equiposHasSitiosSaved = await queryRunner.manager.save(EquiposHasSitios, {
+            sitios_id: sitiosSaved!,
+            equipos_id: equipoSaved,
+            serie: serialNumberToSearch,
+          });
+        }
+      }
+
       const event: Partial<Events> = {
         eventName: target?.EventId?.[0],
         aduana: aduana,
@@ -480,18 +518,11 @@ export const FormatRapiscanToBD = async (
         inspectionSystem: inspectionSystemSaved,
         scanEvents: [scanEventSaved],
         sitios: sitiosSaved,
+        equipos: equiposHasSitiosSaved,
       };
       const eventSaved = await queryRunner.manager.save(Events, event);
 
-      let equipoSaved = await queryRunner.manager.findOne(Equipos, {
-        where: { name: target?.InspectionSystem?.[0]?.ModelName?.[0] },
-      });
 
-      if (!equipoSaved) {
-        equipoSaved = await queryRunner.manager.save(Equipos, {
-          name: target?.InspectionSystem?.[0]?.ModelName?.[0],
-        });
-      }
 
       let status = await queryRunner.manager.findOne(Status, {
         where: { name: "Pendiente" },

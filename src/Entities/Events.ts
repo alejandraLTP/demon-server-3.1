@@ -8,7 +8,8 @@ import {
   JoinColumn,
   CreateDateColumn,
   DeleteDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  Index
 } from "typeorm";
 import { Alarms } from "./Alarms";
 import { EventHistory } from "./EventHistory";
@@ -18,6 +19,7 @@ import { TargetEvents } from "./TargetEvents";
 import { PlacasHasEvents } from "./PlacaHasEvents";
 import { Sitios } from "./Sitios";
 import { Status } from "./Status";
+import { EquiposHasSitios } from "./EquiposHasSitios";
 @Entity()
 export class Events {
   @PrimaryGeneratedColumn()
@@ -65,8 +67,8 @@ export class Events {
   @Column({ type: "text", nullable: true })
   eventKey: string = "";
 
-  @Column({ type: "int", nullable: true })
-  analistId: number | null = null;
+  @Column({ type: "integer", nullable: true })
+  analistId?: number | null;
 
   @Column({ type: "boolean", default: false })
   is_historic: boolean = false;
@@ -89,6 +91,13 @@ export class Events {
   })
   @JoinColumn({ name: "sitios_id" })
   sitios?: Sitios;
+
+  @Index("IDX_events_equipos")
+  @ManyToOne(() => EquiposHasSitios, (equipos) => equipos.events_id, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn({ name: "equipo_id" })
+  equipos?: EquiposHasSitios;
 
   @ManyToOne(
     () => InspectionSystem,

@@ -1,0 +1,51 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Fuentes = exports.OperationAudits = exports.Entities = void 0;
+var Entities;
+(function (Entities) {
+    Entities["users"] = "users";
+    Entities["vehicles"] = "vehicles";
+    Entities["containers"] = "containers";
+    Entities["wagons"] = "wagons";
+    Entities["alarms"] = "alarms";
+    Entities["analysisEvents"] = "analysisEvents";
+    Entities["annotations"] = "annotations";
+    Entities["audits"] = "audits";
+    Entities["declarations"] = "declarations";
+    Entities["drivers"] = "drivers";
+    Entities["events"] = "events";
+    Entities["vehiclesTypes"] = "vehiclesTypes";
+    Entities["horarios"] = "horarios";
+    Entities["operationAreas"] = "operationAreas";
+    Entities["customSection"] = "customSection";
+    Entities["sitios"] = "sitios";
+    Entities["equipos"] = "equipos";
+    Entities["regions"] = "regions";
+    Entities["custom"] = "customs";
+    Entities["file"] = "file";
+    Entities["inspectionSystem"] = "inspectionSystem";
+    Entities["ocrResults"] = "ocrResults";
+    Entities["operator"] = "operator";
+    Entities["targetEvents"] = "targetEvents";
+    Entities["uff"] = "uff";
+    Entities["scan"] = "scan";
+    Entities["scanEvents"] = "scanEvents";
+    Entities["status"] = "status";
+    Entities["blacklist"] = "blacklist";
+    Entities["xrayFiles"] = "xrayFiles";
+    Entities["imageEdits"] = "imageEdits";
+})(Entities || (exports.Entities = Entities = {}));
+var OperationAudits;
+(function (OperationAudits) {
+    OperationAudits["create"] = "CREATE";
+    OperationAudits["update"] = "UPDATE";
+    OperationAudits["delete"] = "DELETE";
+    OperationAudits["login"] = "LOGIN";
+})(OperationAudits || (exports.OperationAudits = OperationAudits = {}));
+var Fuentes;
+(function (Fuentes) {
+    Fuentes["CBP"] = "CBP";
+    Fuentes["DGPEDA"] = "DGPEDA";
+    Fuentes["DEFINIR"] = "POR DEFINIR";
+})(Fuentes || (exports.Fuentes = Fuentes = {}));
+//# sourceMappingURL=enums.js.map
